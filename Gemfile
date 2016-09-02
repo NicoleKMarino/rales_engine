@@ -13,6 +13,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+gem 'unicorn'
+gem 'figaro'
+gem 'rspec-rails'
+gem 'capybara'
+gem 'launchy'
+gem 'database_cleaner'
+gem 'factory_girl_rails'
+gem 'simplecov'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
