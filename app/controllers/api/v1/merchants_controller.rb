@@ -1,30 +1,24 @@
 class Api::V1::MerchantsController < Api::ApiController
+  respond_to :json
+
+  
   def index
-    byebug
-    @merchants = Merchant.where(safe_params).to_json
-    render json: @merchants
+    respond_with Merchant.all
   end
 
   def show
-      @merchant = Merchant.find_by(safe_params).to_json
-      render json: @merchant
+    respond_with Merchant.find_by(id: params[:id])
   end
 
-
   def find
-      @merchant = Merchant.find_by(safe_params).to_json
-      render json: @merchant
+    respond_with Merchant.find_by(safe_params)
   end
 
   def find_all
-    if safe_params.empty?
-      @merchants = Merchant.all.to_json
-      render json: @merchants
-    else
-      @merchants = Merchant.find_by(safe_params).to_json
-      render json: @merchants
-    end
+    respond_with Merchant.where(safe_params)
   end
+
+
 
   private
   def safe_params

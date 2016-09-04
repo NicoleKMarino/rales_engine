@@ -21,6 +21,7 @@ gem 'launchy'
 gem 'database_cleaner'
 gem 'factory_girl_rails'
 gem 'simplecov'
+gem 'responders'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
