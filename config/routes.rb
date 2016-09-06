@@ -23,18 +23,19 @@ Rails.application.routes.draw do
       end
 
       resources :items, only: [:show, :index]
-      # resources :merchants, only: [:show, :index] do
-      #   collection do
-      #     get :find
-      #     get :find_all
-      #   end
-      # end
+      resources :merchants, only: [:show, :index] do
+        collection do
+          get :find
+          get :find_all
+        end
+      end
 
       get '/merchants/find_all',     to: 'merchants_finder#find_all'
       get '/merchants/find',         to: 'merchants_finder#find'
       get '/merchants/random',       to: 'merchants_finder#random'
       resources :merchants, only: [:show, :index] , defaults: {format: :json} do
           get :items
+          get :invoices 
       end
     end
   end
