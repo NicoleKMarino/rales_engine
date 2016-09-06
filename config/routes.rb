@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get '/merchants/random',       to: 'merchants/merchants_finder#random'
       resources :merchants, only: [:show, :index] do
           get :items
+          get :invoices
       end
     end
   end

@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  validates :name, presence: true, uniqueness: true
   belongs_to :merchant
   has_many :invoice_items
 
