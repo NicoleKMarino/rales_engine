@@ -18,10 +18,15 @@ class Api::V1::MerchantsController < Api::ApiController
     respond_with Merchant.where(safe_params)
   end
 
+  def items
+    respond_with Merchant.find(safe_params[:merchant_id]).items
+  end
+
   private
   def safe_params
     params.permit(:id,
-                  :name)
+                  :name,
+                  :merchant_id)
   end
 
 end
