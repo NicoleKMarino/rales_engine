@@ -1,11 +1,11 @@
-class Api::V1::MerchantsFinderController < Api::ApiController
+class Api::V1::Merchants::MerchantsFinderController < Api::ApiController
   respond_to :json
 
-  def find
+  def show
     respond_with Merchant.find_by(safe_params)
   end
 
-  def find_all
+  def index
     respond_with Merchant.where(safe_params)
   end
 

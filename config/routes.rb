@@ -2,40 +2,27 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: {format: :json} do
 
-      namespace :invoice_items do
-        get "/find_all", to: "find#index"
-        get "/find", to: "find#show"
-      end
-
-      resources :invoices, only: [:show, :index]
-
-      namespace :invoice do
-
-        get "/find_all", to: "find#index"
-        get "/find", to: "find#show"
-      end
+      get "invoice_items/find_all", to: "invoice_items/find#index"
+      get "invoice_items/find", to: "invoice_items/find#show"
 
       resources :invoice_items, only: [:show, :index]
 
-      namespace :items do
-        get "/find_all", to: "find#index"
-        get "/find", to: "find#show"
-      end
+      get "invoices/find_all", to: "invoices/find#index"
+      get "invoices/find", to: "invoices/find#show"
+
+      resources :invoices, only: [:show, :index]
+
+      get "items/find_all", to: "items/find#index"
+      get "items/find", to: "items/find#show"
 
       resources :items, only: [:show, :index]
-      resources :merchants, only: [:show, :index] do
-        collection do
-          get :find
-          get :find_all
-        end
-      end
 
-      get '/merchants/find_all',     to: 'merchants_finder#find_all'
-      get '/merchants/find',         to: 'merchants_finder#find'
-      get '/merchants/random',       to: 'merchants_finder#random'
-      resources :merchants, only: [:show, :index] , defaults: {format: :json} do
+      get '/merchants/find_all',     to: 'merchants/merchants_finder#index'
+      get '/merchants/find',         to: 'merchants/merchants_finder#show'
+      get '/merchants/random',       to: 'merchants/merchants_finder#random'
+      resources :merchants, only: [:show, :index] do
           get :items
-          get :invoices 
+          get :invoices
       end
     end
   end
