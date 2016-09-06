@@ -1,14 +1,5 @@
-class Api::V1::MerchantsController < Api::ApiController
+class Api::V1::MerchantsFinderController < Api::ApiController
   respond_to :json
-
-
-  def index
-    respond_with Merchant.all
-  end
-
-  def show
-    respond_with Merchant.find_by(id: params[:id])
-  end
 
   def find
     respond_with Merchant.find_by(safe_params)
@@ -17,6 +8,10 @@ class Api::V1::MerchantsController < Api::ApiController
   def find_all
     respond_with Merchant.where(safe_params)
   end
+
+  def random
+   respond_with Merchant.limit(1).order("RANDOM()")
+ end
 
   private
   def safe_params
