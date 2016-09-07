@@ -12,4 +12,12 @@ class Invoice < ActiveRecord::Base
   def self.find_all(params)
     self.where(params)
   end
+
+  def self.successful
+    self.joins(:transactions).where(transactions: { result: "success" })
+  end
+
+  def self.failed
+    self.joins(:transactions).where(transactions: { result: "failed" })
+  end
 end
