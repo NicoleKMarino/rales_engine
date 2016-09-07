@@ -6,7 +6,6 @@ class Merchant < ApplicationRecord
   def revenue
     revenue = 0
     invoices = invoices.successful
-    
   end
 
 end
