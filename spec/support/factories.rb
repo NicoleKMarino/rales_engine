@@ -27,13 +27,18 @@ FactoryGirl.define do
     result "success"
   end
 
+  factory :merchant do
+    name { generate(:name) }
+  end
+
+  factory :item do
+    name { generate(:name) }
+    merchant
+  end
+
   factory :invoice do
     status "shipped"
     customer
     merchant
-  end
-
-  factory :merchant do
-    name { generate(:name) }
   end
 end

@@ -1,4 +1,4 @@
-class InvoiceItem < ActiveRecord::Base
+class InvoiceItem < ApplicationRecord
   belongs_to :invoice
   belongs_to :item
 
@@ -9,8 +9,6 @@ class InvoiceItem < ActiveRecord::Base
   def self.find_all(params)
     self.where(params)
   end
-  
-  def self.random
-    self.limit(1).order("RANDOM()")
-  end
+
+
 end

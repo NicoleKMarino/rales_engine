@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Item < ApplicationRecord
   validates :name, presence: true
   belongs_to :merchant
   has_many :invoice_items
@@ -12,7 +12,8 @@ class Item < ActiveRecord::Base
     self.where(params)
   end
 
-  def self.random
-    self.limit(1).order("RANDOM()")
+  def to_decimal
+    decimal = self.unit_price.to_f / 100
+    decimal.to_s
   end
 end
