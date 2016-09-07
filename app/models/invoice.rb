@@ -5,12 +5,16 @@ class Invoice < ActiveRecord::Base
   has_many :transactions
   has_many :items, through: :invoice_items
 
-  def self.find(params)
+  def self.find_one(params)
     self.find_by(params)
   end
 
   def self.find_all(params)
     self.where(params)
+  end
+
+  def self.random
+    self.limit(1).order("RANDOM()")
   end
 
   def self.successful
@@ -19,5 +23,6 @@ class Invoice < ActiveRecord::Base
 
   def self.failed
     self.joins(:transactions).where(transactions: { result: "failed" })
-  end
+  end 
+
 end

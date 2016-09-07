@@ -6,7 +6,7 @@ class Api::V1::Invoices::FindController < ApplicationController
   end
 
   def show
-    respond_with Invoice.find(invoice_params)
+    respond_with Invoice.find_one(invoice_params)
   end
 
   private
@@ -17,6 +17,7 @@ class Api::V1::Invoices::FindController < ApplicationController
         :merchant_id,
         :status,
         :created_at,
-        :updated_at)
+        :updated_at
+      )
     end
 end

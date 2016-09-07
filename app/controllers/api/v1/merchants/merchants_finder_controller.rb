@@ -2,21 +2,21 @@ class Api::V1::Merchants::MerchantsFinderController < Api::ApiController
   respond_to :json
 
   def show
-    respond_with Merchant.find_by(safe_params)
+    respond_with Merchant.find_one(safe_params)
   end
 
   def index
-    respond_with Merchant.where(safe_params)
+    respond_with Merchant.find_all(safe_params)
   end
 
-  def random
-   respond_with Merchant.limit(1).order("RANDOM()")
- end
-
-  private
-  def safe_params
-    params.permit(:id,
-                  :name)
-  end
-
+   private
+     def safe_params
+       params.permit(
+        :id,
+        :name,
+        :merchant_id,
+        :created_at,
+        :updated_at
+      )
+     end
 end

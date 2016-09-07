@@ -15,7 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'unicorn'
 gem 'figaro'
-gem 'rspec-rails'
 gem 'capybara'
 gem 'launchy'
 gem 'database_cleaner'
@@ -38,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
+  gem 'rspec-rails'
 end
 
 group :development, :test do
