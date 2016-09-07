@@ -6,7 +6,7 @@ class Api::V1::InvoiceItems::FindController < ApplicationController
   end
 
   def show
-    respond_with InvoiceItem.find(invoice_items_params)
+    respond_with InvoiceItem.find_one(invoice_items_params)
   end
 
   private
@@ -18,6 +18,7 @@ class Api::V1::InvoiceItems::FindController < ApplicationController
         :quantity,
         :unit_price,
         :created_at,
-        :updated_at)
+        :updated_at
+      )
     end
 end

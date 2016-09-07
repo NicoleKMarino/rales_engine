@@ -6,7 +6,7 @@ class Api::V1::Items::FindController < ApplicationController
   end
 
   def show
-    respond_with Item.find(item_params)
+    respond_with Item.find_one(item_params)
   end
 
   private
@@ -18,6 +18,7 @@ class Api::V1::Items::FindController < ApplicationController
         :unit_price,
         :merchant_id,
         :created_at,
-        :updated_at)
+        :updated_at
+      )
     end
 end
