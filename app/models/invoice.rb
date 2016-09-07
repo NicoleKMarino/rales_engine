@@ -1,4 +1,4 @@
-class Invoice < ActiveRecord::Base
+class Invoice < ApplicationRecord
   belongs_to :customer
   belongs_to :merchant
   has_many :invoice_items
@@ -13,16 +13,12 @@ class Invoice < ActiveRecord::Base
     self.where(params)
   end
 
-  def self.random
-    self.limit(1).order("RANDOM()")
-  end
-
   def self.successful
     self.joins(:transactions).where(transactions: { result: "success" })
   end
 
   def self.failed
     self.joins(:transactions).where(transactions: { result: "failed" })
-  end 
+  end
 
 end

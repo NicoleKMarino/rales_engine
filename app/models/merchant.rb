@@ -15,8 +15,4 @@ class Merchant < ApplicationRecord
   def self.find_all(params)
     self.where(params)
   end
-
-  def self.random
-    self.limit(1).order("RANDOM()")
-  end
 end

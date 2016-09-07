@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Item < ApplicationRecord
   validates :name, presence: true
   belongs_to :merchant
   has_many :invoice_items
@@ -10,10 +10,6 @@ class Item < ActiveRecord::Base
 
   def self.find_all(params)
     self.where(params)
-  end
-
-  def self.random
-    self.limit(1).order("RANDOM()")
   end
 
   def to_decimal

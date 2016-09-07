@@ -7,7 +7,8 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
-    respond_with Item.find(params[:id])
+    @item = Item.find(params[:id])
+    respond_with @item
   end
 
   def invoice_items

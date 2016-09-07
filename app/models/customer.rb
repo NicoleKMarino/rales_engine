@@ -12,7 +12,4 @@ class Customer < ApplicationRecord
     self.where(params)
   end
 
-  def self.random
-    self.limit(1).order("RANDOM()")
-  end
 end
