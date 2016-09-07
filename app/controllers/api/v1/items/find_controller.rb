@@ -6,7 +6,11 @@ class Api::V1::Items::FindController < ApplicationController
   end
 
   def show
-    respond_with Item.find_one(item_params)
+    if params[:unit_price]
+      respond_with Item.find_by(unit_price: params[:unit_price].to_i)
+    else
+      respond_with Item.find_one(item_params)
+    end
   end
 
   private
