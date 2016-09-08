@@ -10,10 +10,22 @@ class Merchant < ApplicationRecord
   end
 
   def customers_with_pending_invoices
-    customer_ids = Invoice.failed.where(merchant_id: self.id).pluck(:customer_id).uniq
+    customer_ids = Invoice.failed
+      .where(merchant_id: self.id)
+      .pluck(:customer_id).uniq
     customer_ids.map do |customer_id|
       { "customer_id" => customer_id }
     end
+  end
+
+  def favorite_customer
+    customer = self.invoices
+      .successful
+      .group(:customer_id)
+      .order('count_id DESC')
+      .limit(1)
+      .count(:id).first.first
+    { id: customer }
   end
 
   def self.find_one(params)
