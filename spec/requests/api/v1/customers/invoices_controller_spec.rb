@@ -11,16 +11,17 @@ RSpec.describe Api::V1::Customers::InvoicesController, type: :request do
       transactions = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      assert_equal 2, transactions.count
+      expect(transactions.count).to eq(2)
     end
 
     it 'returns empty array when there are no existing transactions for a customer' do
       customer = create(:customer)
+
       get "/api/v1/customers/#{customer.id}/transactions"
-      customer = JSON.parse(response.body)
+      customer_response = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      assert_equal [], customer
+      expect(customer_response).to eq([])
     end
   end
 end
