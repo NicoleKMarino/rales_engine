@@ -3,6 +3,7 @@ class Api::V1::Customers::TransactionsController < ApplicationController
 
   def index
     customer = Customer.find(params[:id])
-    respond_with customer.transactions
+    @transactions = customer.transactions
+    respond_with @transactions
   end
 end

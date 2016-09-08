@@ -11,9 +11,4 @@ class Item < ApplicationRecord
   def self.find_all(params)
     self.where(params)
   end
-
-  def to_decimal
-    decimal = self.unit_price.to_f / 100
-    decimal.to_s
-  end
 end

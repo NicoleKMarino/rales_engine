@@ -4,4 +4,10 @@ class ApplicationRecord < ActiveRecord::Base
   def self.random
     limit(1).order("RANDOM()")
   end
+
+  def to_decimal
+    decimal = self.unit_price.to_f / 100
+    decimal.to_s
+  end
+
 end

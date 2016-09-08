@@ -3,6 +3,7 @@ class Api::V1::InvoiceItems::ItemsController < ApplicationController
 
   def show
     invoice_item = InvoiceItem.find(params[:id])
-    respond_with invoice_item.item
+    @item = invoice_item.item
+    respond_with @item
   end
 end
