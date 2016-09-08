@@ -3,6 +3,7 @@ class Api::V1::Invoices::TransactionsController < ApplicationController
 
   def index
     invoice = Invoice.find(params[:id])
-    respond_with invoice.transactions
+    @transactions = invoice.transactions
+    respond_with @transactions
   end
 end
