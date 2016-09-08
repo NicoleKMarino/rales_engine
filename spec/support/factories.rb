@@ -41,4 +41,10 @@ FactoryGirl.define do
     customer
     merchant
   end
+
+  factory :invoice_item do
+    item
+    invoice
+    quantity 1
+  end
 end
