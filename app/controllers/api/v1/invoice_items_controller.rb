@@ -2,11 +2,13 @@ class Api::V1::InvoiceItemsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with InvoiceItem.all
+    @invoice_items = InvoiceItem.all
+    respond_with @invoice_items
   end
 
   def show
-    respond_with InvoiceItem.find(params[:id])
+    @invoice_item = InvoiceItem.find(params[:id])
+    respond_with @invoice_item
   end
 
   def invoice
