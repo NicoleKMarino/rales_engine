@@ -5,7 +5,10 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
 
   def revenue
-    revenue = self.invoices.successful.joins(:invoice_items).sum('quantity * unit_price')
+    revenue = self.invoices
+      .successful
+      .joins(:invoice_items)
+      .sum('quantity * unit_price')
     { "revenue" => to_decimal(revenue).to_s }
   end
 
