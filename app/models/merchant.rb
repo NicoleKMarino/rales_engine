@@ -39,6 +39,10 @@ class Merchant < ApplicationRecord
     self.where(params)
   end
 
+  def self.most_revenue(quantity)
+    self.joins(:invoice_items).group(:id).order('sum(invoice_items.quantity * invoice_items.unit_price)DESC').limit(quantity)
+  end
+
   def to_decimal(number)
     (number.to_f / 100).round(2)
   end
