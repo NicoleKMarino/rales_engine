@@ -22,10 +22,10 @@ RSpec.describe Api::V1::Transactions::RandomController, type: :request do
 
     it 'returns empty array when there are no existing transactions' do
       get "/api/v1/transactions/random"
-      merchant = JSON.parse(response.body)
+      transaction = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      expect([]).to eq(merchant)
+      expect([]).to eq(transaction)
     end
   end
 end
