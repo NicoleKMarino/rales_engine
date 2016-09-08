@@ -45,6 +45,7 @@ FactoryGirl.define do
   factory :invoice_item do
     item
     invoice
-    quantity 1
+    quantity { rand(1..10) }
+    unit_price { rand(1..100) }
   end
 end

@@ -4,6 +4,4 @@ class ApplicationRecord < ActiveRecord::Base
   def self.random
     limit(1).order("RANDOM()")
   end
-
-
 end
