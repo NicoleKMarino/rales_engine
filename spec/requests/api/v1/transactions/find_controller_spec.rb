@@ -50,7 +50,6 @@ RSpec.describe Api::V1::Transactions::FindController, type: :request do
 
       get "/api/v1/transactions/find?transaction_id=#{transaction.id}"
       transaction_response = JSON.parse(response.body)
-      # byebug
 
       expect(response.status).to eq(200)
 
