@@ -20,5 +20,4 @@ class Invoice < ApplicationRecord
   def self.failed
     self.joins(:transactions).where(transactions: { result: "failed" })
   end
-
 end
