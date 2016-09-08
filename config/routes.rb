@@ -25,11 +25,10 @@ Rails.application.routes.draw do
       get "items/find_all", to: "items/find#index"
       get "items/find", to: "items/find#show"
       get "items/random", to: "items/random#show"
+      get "items/:id/invoice_items", to: "items/invoice_items#index"
+      get "items/:id/merchant", to: "items/merchants#index"
 
-      resources :items, only: [:show, :index] do
-        get :invoice_items
-        get :merchant
-      end
+      resources :items, only: [:show, :index]
 
       get '/merchants/find_all',     to: 'merchants/merchants_finder#index'
       get '/merchants/find',         to: 'merchants/merchants_finder#show'

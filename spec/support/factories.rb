@@ -41,4 +41,11 @@ FactoryGirl.define do
     customer
     merchant
   end
+
+  factory :invoice_item do
+    item
+    invoice
+    quantity { rand(1..10) }
+    unit_price { rand(1..100) }
+  end
 end
