@@ -32,6 +32,9 @@ Rails.application.routes.draw do
       get '/merchants/find_all',     to: 'merchants/merchants_finder#index'
       get '/merchants/find',         to: 'merchants/merchants_finder#show'
       get '/merchants/random',       to: 'merchants/random#show'
+      get '/merchants/:id/revenue', to: 'merchants/revenue#show'
+      get '/merchants/:id/customers_with_pending_invoices', to: 'merchants/customers_with_pending_invoices#show'
+      # get '/api/v1/merchants/:id/favorite_customer', to: 
 
       resources :merchants, only: [:show, :index] do
           get :items
