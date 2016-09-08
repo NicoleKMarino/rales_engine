@@ -11,4 +11,13 @@ class Item < ApplicationRecord
   def self.find_all(params)
     self.where(params)
   end
+
+  def best_day
+    date = invoices.successful
+      .select("created_at")
+      .group("created_at")
+      .order("sum(quantity)DESC")
+      .first["created_at"]
+    { best_day: date }
+  end
 end
