@@ -2,13 +2,11 @@ class Merchant < ApplicationRecord
   validates :name, presence: true
   has_many :items
   has_many :invoices
+  has_many :invoice_items, through: :invoices
 
   def revenue
-    invoice_items = Invoice.successful.where(merchant_id: self.id).joins(:invoice_items).pluck(:quantity, :unit_price)
-    revenue = invoice_items.map do |quantity, unit_price|
-      quantity * unit_price
-    end.reduce(:+)
-    { "revenue" => "#{revenue.to_f / 100}" }
+    revenue = self.invoices.successful.joins(:invoice_items).sum('quantity * unit_price')
+    { "revenue" => to_decimal(revenue).to_s }
   end
 
   def customers_with_pending_invoices
@@ -24,5 +22,9 @@ class Merchant < ApplicationRecord
 
   def self.find_all(params)
     self.where(params)
+  end
+
+  def to_decimal(number)
+    (number.to_f / 100).round(2)
   end
 end
