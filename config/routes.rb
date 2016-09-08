@@ -31,9 +31,10 @@ Rails.application.routes.draw do
 
       get '/merchants/find_all',     to: 'merchants/merchants_finder#index'
       get '/merchants/find',         to: 'merchants/merchants_finder#show'
-      get '/merchants/random',       to: 'merchants/random#show'
+      get '/merchants/random',       to: 'merchants/random#index'
       get '/merchants/:id/items', to: 'merchants/items#index'
       get '/merchants/:id/invoices', to: 'merchants/invoices#index'
+      get '/merchants/revenue', to: 'merchants/revenue_by_date#index'
       get '/merchants/:id/revenue', to: 'merchants/revenue#show'
       get '/merchants/:id/customers_with_pending_invoices', to: 'merchants/customers_with_pending_invoices#show'
       get '/merchants/:id/favorite_customer', to: 'merchants/favorite_customer#show'

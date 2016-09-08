@@ -6,7 +6,12 @@ class Merchant < ApplicationRecord
 
   def revenue
     revenue = self.invoices.successful.joins(:invoice_items).sum('quantity * unit_price')
-    { "revenue" => to_decimal(revenue).to_s }
+    to_decimal(revenue)
+  end
+
+  def revenue_by_date(date)
+    revenue = self.invoices.successful.where(created_at: date).joins(:invoice_items).sum('quantity * unit_price')
+    to_decimal(revenue)
   end
 
   def customers_with_pending_invoices
@@ -25,6 +30,7 @@ class Merchant < ApplicationRecord
   end
 
   def to_decimal(number)
-    (number.to_f / 100).round(2)
+    (number.to_f / 100).round(2).to_s
   end
+
 end
