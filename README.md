@@ -1,24 +1,28 @@
-# README
+## Rales Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+clone project
+```
+git@github.com:NicoleKMarino/rales_engine.git
+```
 
-Things you may want to cover:
+cd into project directory
 
-* Ruby version
+Remember to:
+```
+bundle
+```
 
-* System dependencies
 
-* Configuration
+To seed database run:
+```
+rake csv_data:import_all
+```
 
-* Database creation
+To run all tests, run:
+```
+rspec
+```
 
-* Database initialization
+This project was done following [this spec](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/rails_engine.md)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+And follows specifications of this [spec harness](https://github.com/turingschool/rales_engine_spec_harness)
