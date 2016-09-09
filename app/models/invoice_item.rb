@@ -9,6 +9,4 @@ class InvoiceItem < ApplicationRecord
   def self.find_all(params)
     self.where(params)
   end
-
-
 end
