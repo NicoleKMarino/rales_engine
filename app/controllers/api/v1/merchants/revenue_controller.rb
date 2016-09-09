@@ -11,5 +11,4 @@ class Api::V1::Merchants::RevenueController < Api::ApiController
       render :show
     end
   end
-
 end
