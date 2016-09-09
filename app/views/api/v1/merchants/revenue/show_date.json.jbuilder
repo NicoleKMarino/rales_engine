@@ -1,4 +1,4 @@
 date = params[:date]
-json.(@merchant, :revenue_by_date(date))
+json.revenue @revenue_by_date 
 
-#this does not work 
+#this does not work
