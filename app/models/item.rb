@@ -13,12 +13,11 @@ class Item < ApplicationRecord
   end
 
   def best_day
-    date = invoices.successful
+    invoices.successful
       .select("created_at")
       .group("created_at")
       .order("sum(quantity)DESC")
       .first["created_at"]
-    { best_day: date }
   end
 
   def self.most_revenue(quantity)
