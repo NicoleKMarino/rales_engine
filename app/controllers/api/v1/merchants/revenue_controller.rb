@@ -4,8 +4,7 @@ class Api::V1::Merchants::RevenueController < Api::ApiController
   def show
     @merchant = Merchant.find(params[:id])
     if params[:date]
-      date = params[:date]
-      @revenue_by_date = @merchant.revenue_by_date(date)
+      @revenue_by_date = @merchant.revenue_by_date(params[:date])
       render :show_date
     else
       @revenue = @merchant.revenue.to_s
