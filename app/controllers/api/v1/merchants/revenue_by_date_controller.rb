@@ -6,15 +6,15 @@ class Api::V1::Merchants::RevenueByDateController < Api::ApiController
     respond_with @total
   end
 
-
   def total_revenue_by_date(date)
-    total = 0
-    Merchant.all.each do |merchant|
-      merchant.revenue_by_date(params[:date]).first + total
-      byebug
+    total = []
+    Merchant.all.map do |merchant|
+      revenue = merchant.revenue_by_date(params[:date])
+      total << revenue.to_i
     end
-    byebug
-    total
+    total.sum
   end
+
+
 
 end
